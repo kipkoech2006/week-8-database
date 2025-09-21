@@ -1,0 +1,20 @@
+CREATE DATABASE sales_db;
+USE sales_db;
+CREATE TABLE citizens(
+    id INT  PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    age INT NOT NULL,
+    address VARCHAR(255)
+);
+CREATE TABLE passport(
+    passport_id INT PRIMARY KEY AUTO_INCREMENT,
+    passport_number VARCHAR(20) NOT NULL,
+    user_id INT UNIQUE,
+    FOREIGN KEY (user_id) REFERENCES citizens(id)
+);
+INSERT INTO citizens (first_name, last_name, email, age, address) VALUES
+('John', 'Doe', 'john.doe@example.com', 30, '123 Elm St');
+INSERT INTO passport (passport_number, user_id) VALUES
+('A12345678', 1);
